@@ -27,7 +27,7 @@ class OurFinch: # Everything the finch is supposed to do!
       #Print the temperature
       print ('Temperature %5.2f' % finch.temperature())
       #if the temperature is greater than or equal to 10 degrees
-      if finch.temperature() >= float("10.00"):
+      if finch.temperature() >= float ("10.00"):
          #print thats its alive
          print ("IT'S ALIVE!!")
          finch.led("#FF0000") # set the led to red
@@ -36,12 +36,12 @@ class OurFinch: # Everything the finch is supposed to do!
          #Add one to bodies (will later make more sense)
          bodies += 1
          print ("After", bodies)
-         sleep(1.0)
+         sleep(1.5)
          return bodies
       else:
         # If the temperature was less than ten it was just an obstacle
         print ("Nochange")
-        sleep(1.0)
+        sleep(1.5)
         return bodies
 
 

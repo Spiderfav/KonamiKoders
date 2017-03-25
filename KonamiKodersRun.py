@@ -3,7 +3,7 @@ import KonamiKoders
 from time import sleep
 
 bodies = 0 # The initial counter
-bodies_max = 1 # The maximum number of bodies 
+bodies_max = 3 # The maximum number of bodies 
 mode = 'search' # Set the mode for the finch as search
 
 finch666 = KonamiKoders.OurFinch() # finch666 is equal to the class name
