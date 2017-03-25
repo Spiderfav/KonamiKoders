@@ -25,7 +25,7 @@ while True:
     left_light, right_light = finch.light()
     print ('Lights %5.3f, %5.3f' % (left_light, right_light))
     if  float(left_light - right_light) <= 0.08 and float(left_light - right_light) >= 0:
-        finch.wheels(0.25,0.25)
+        finch.wheels(1.0,1.0)
 
         # If the finch is getting more light in the right than left
     elif right_light > left_light:
