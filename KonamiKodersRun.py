@@ -1,4 +1,6 @@
 import KonamiKoders
+finch = Finch()
+from finch import Finch
 
 from time import sleep
 
