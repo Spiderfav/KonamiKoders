@@ -18,3 +18,5 @@ finch666.goninja(bodies, bodies_max, mode) # From the class run goninja
 # iPhone is basicaly the same temp as air
 # My hand is 23.33 when room temp == 22.08
 # Aprox. bottle 25.42
+
+

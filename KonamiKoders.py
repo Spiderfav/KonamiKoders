@@ -22,12 +22,12 @@ class OurFinch: # Everything the finch is supposed to do!
     return 1
 
   # This function checks the temperature of the bodies to see if they are alive!
-  def checktemp(self, bodies, bodies_max, ambient_temp):
+  def checktemp(self, bodies, bodies_max):
       
       #Print the temperature
       print ('Temperature %5.2f' % finch.temperature())
       #if the temperature is greater than or equal to 10 degrees
-      if finch.temperature() >= float(ambient_temp + 0.5):
+      if finch.temperature() >= float("10.00"):
          #print thats its alive
          print ("IT'S ALIVE!!")
          finch.led("#FF0000") # set the led to red
@@ -49,7 +49,6 @@ class OurFinch: # Everything the finch is supposed to do!
   def goninja(self, bodies, bodies_max, mode):
       # Get the Z-Axis acceleration
       zAccel = finch.acceleration()[2]
-      ambient_temp = finch.temperature()
       # Do the following while the Finch is not upside down 
       while zAccel > -0.7:
         # if the mode is exit
@@ -76,7 +75,7 @@ class OurFinch: # Everything the finch is supposed to do!
               else:
                 #else go to function to check temp to make sure its a body
                 print ("Adding bodies!")
-                bodies = self.checktemp(bodies, bodies_max, ambient_temp )
+                bodies = self.checktemp(bodies, bodies_max)
             else :
                 self.followthelight()
             # If there's an obstacle on the left, back up and arc
