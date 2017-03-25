@@ -36,12 +36,12 @@ class OurFinch: # Everything the finch is supposed to do!
          #Add one to bodies (will later make more sense)
          bodies += 1
          print ("After", bodies)
-         sleep(1.5)
+         sleep(1.0)
          return bodies
       else:
         # If the temperature was less than ten it was just an obstacle
         print ("Nochange")
-        sleep(1.5)
+        sleep(1.0)
         return bodies
 
 
