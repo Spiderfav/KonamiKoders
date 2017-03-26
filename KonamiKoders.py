@@ -124,21 +124,39 @@ class OurFinch: # Everything the finch is supposed to do!
     left  = 0.0
     right = 0.0
     count = 0
-    my_pos   = {count:pos}
-    my_left  = {count:left}
-    my_right = {count:right}
+    left_max = 0.0
+    right_max = 0.0
+    best_pos = 0.0
+    pos_array = []
     while (count < 17):
-      print ("COUNT : ", count)
-      left, right = finch.light()
-      finch.wheels(0,0.25)
-      sleep(1.0)
-      my_left[count] =float(left)
-      my_right[count]=float(right)
-      my_pos[count]  =float(pos)
-      count += 1
-      pos += 0.25
-    print sorted(my_left.values())
-    print('left : ', my_left)
-    print('right : ', my_right)
-    print('pos : ', my_pos)
+        print ("COUNT : ", count)
+        left, right = finch.light()
+        finch.wheels(0,0.25)
+        sleep(1.0)
+        pos_array.append((float(count), float(left), float(right)))
+        count += 1
+        pos += 0.25
+    left_sorted = sorted(pos_array, key=lambda left: left[1], reverse=True)
+    right_sorted = sorted(pos_array, key=lambda right: right[2], reverse=True)
+    print ("left")
+    for a_tuple in left_sorted:  # iterates through each tuple
+        print a_tuple
+    print ("right")
+    for a_tuple in right_sorted:  # iterates through each tuple
+        print a_tuple    
+    left_max = (left_sorted.pop(0))[0]
+    right_max = (right_sorted.pop(0))[0]
+    print (left_max, right_max)
+    best_pos = ((left_max + right_max)/2)
+    print ("lets go to : ", best_pos)
+    count = 0
+    while (count < (17 - best_pos):
+        print ("COUNT : ", count)
+        left, right = finch.light()
+        finch.wheels(0,-0.25)
+        sleep(1.0)
+        count += 1
+    #for item in a_tuple:  # iterates through each tuple items
+            #print item
+
 
