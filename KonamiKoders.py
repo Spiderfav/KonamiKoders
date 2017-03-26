@@ -138,7 +138,7 @@ class OurFinch: # Everything the finch is supposed to do!
       count += 1
       pos += 0.25
     print sorted(my_left.values())
-    #print('left : ', my_left)
-    #print('right : ', my_right)
-    #print('pos : ', my_pos)
+    print('left : ', my_left)
+    print('right : ', my_right)
+    print('pos : ', my_pos)
 

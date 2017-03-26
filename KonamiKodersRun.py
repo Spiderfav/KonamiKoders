@@ -10,9 +10,9 @@ finch666 = KonamiKoders.OurFinch() # finch666 is equal to the class name
 
 #finch666.init()
 
-finch666.goninja(bodies, bodies_max, mode) # From the class run goninja
+#finch666.goninja(bodies, bodies_max, mode) # From the class run goninja
 
-#finch666.findthelight()
+finch666.findthelight()
 
 
 # iPhone is basicaly the same temp as air
