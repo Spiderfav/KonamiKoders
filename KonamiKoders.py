@@ -46,38 +46,19 @@ class OurFinch: # Everything the finch is supposed to do!
 
 
   #Function Go Ninja
-  def goninja(self, bodies, bodies_max, mode):
+  def findbodies(self, bodies, bodies_max):
       # Get the Z-Axis acceleration
       zAccel = finch.acceleration()[2]
       # Do the following while the Finch is not upside down 
-      while zAccel > -0.7:
-        # if the mode is exit
-          if mode == 'exit':
-            sleep (2.0)
-            #Then go to function "follow the light"
-            self.followthelight()
-            
+      while zAccel > -0.7:            
           left_obstacle, right_obstacle = finch.obstacle()
-          if (right_obstacle or left_obstacle):
-            print ("RIGHT : ", right_obstacle, "::::: LEFT : ", left_obstacle)
-
           if right_obstacle or left_obstacle:
+            print ("RIGHT : ", right_obstacle, "::::: LEFT : ", left_obstacle)
             finch.wheels(0.0,0.0)
             sleep(0.5)
-            # if mode is set to search
-            if mode == 'search':
-              # and if the bodies is equal to bodies max
-              if bodies == bodies_max :
-                self.findthelight()
-                print ("Going home")
-                #set mode to exit
-                mode = 'exit'
-              else:
-                #else go to function to check temp to make sure its a body
-                print ("Adding bodies!")
-                bodies = self.checktemp(bodies, bodies_max)
-            else :
-                self.followthelight()
+           #else go to function to check temp to make sure its a body
+            print ("Adding bodies!")
+            bodies = self.checktemp(bodies, bodies_max)
             # If there's an obstacle on the left, back up and arc
             if left_obstacle:
                 finch.led(255,0,0)
@@ -88,7 +69,9 @@ class OurFinch: # Everything the finch is supposed to do!
                 finch.led(255,255,0)
                 finch.wheels(-1.0,-0.3)
                 sleep(1.0)
-
+            #if the bodies is equal to bodies max
+            if bodies == bodies_max :
+              return
           # Else just go straight
           else:
               finch.wheels(1.0, 1.0)
@@ -96,6 +79,38 @@ class OurFinch: # Everything the finch is supposed to do!
           # Keep reading in the Z acceleration
           zAccel = finch.acceleration()[2]
 
+  def goinghome(self):
+      # Get the Z-Axis acceleration
+      print ("Going home")
+      zAccel = finch.acceleration()[2]
+      # Do the following while the Finch is not upside down
+      self.findthelight()
+      while zAccel > -0.7:     
+        left_obstacle, right_obstacle = finch.obstacle()
+        self.followthelight()
+        if right_obstacle or left_obstacle:
+          print ("RIGHT : ", right_obstacle, "::::: LEFT : ", left_obstacle)
+          finch.wheels(0.0,0.0)
+          sleep(0.5)
+          # If there's an obstacle on the left, back up and arc
+          if left_obstacle:
+              finch.led(255,0,0)
+              finch.wheels(-0.2,-0.5)
+              sleep(1.0)
+          # If there's an obstacle on the right, back up and arc
+          elif right_obstacle:
+              finch.led(255,255,0)
+              finch.wheels(-0.5,-0.2)
+              sleep(1.0)
+          # Else just go straight
+          else:
+              finch.wheels(0.7, 0.7)
+              finch.led(0,255,0)
+          # Keep reading in the Z acceleration
+          zAccel = finch.acceleration()[2]
+
+
+       
   # Function follow the light
   def followthelight(self):
     left_light, right_light = finch.light()
@@ -128,7 +143,7 @@ class OurFinch: # Everything the finch is supposed to do!
     right_max = 0.0
     best_pos = 0.0
     pos_array = []
-    while (count < 17):
+    while (count < 16):
         print ("COUNT : ", count)
         left, right = finch.light()
         finch.wheels(0,0.25)
@@ -150,7 +165,7 @@ class OurFinch: # Everything the finch is supposed to do!
     best_pos = ((left_max + right_max)/2)
     print ("lets go to : ", best_pos)
     count = 0
-    while (count < (17 - best_pos):
+    while (count < (16 - best_pos)):
         print ("COUNT : ", count)
         left, right = finch.light()
         finch.wheels(0,-0.25)
